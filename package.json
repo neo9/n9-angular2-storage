@@ -4,7 +4,7 @@
   "scripts": {
     "preversion": "npm run lint",
     "version": "npm build",
-    "build": "rm -rf dist/ && tsc --project src/tsconfig.es5.json",
+    "build": "gulp build",
     "build:watch": "gulp",
     "docs": "npm run docs:build",
     "docs:build": "compodoc -p tsconfig.json -n n9-angular2-storage -d docs --hideGenerator",
@@ -60,6 +60,7 @@
     "node-watch": "^0.5.2",
     "protractor": "~5.1.0",
     "rollup": "^0.49.2",
+    "rollup-plugin-absolute-module-fix": "0.0.1",
     "rollup-plugin-node-resolve": "^3.0.0",
     "run-sequence": "^2.1.0",
     "rxjs": "^5.1.0",

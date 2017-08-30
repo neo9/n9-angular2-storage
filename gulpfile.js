@@ -6,7 +6,8 @@ var gulp = require('gulp'),
   rename = require('gulp-rename'),
   del = require('del'),
   runSequence = require('run-sequence'),
-  inlineResources = require('./tools/gulp/inline-resources');
+  inlineResources = require('./tools/gulp/inline-resources'),
+  absModuleFix = require('rollup-plugin-absolute-module-fix');
 
 const rootFolder = path.join(__dirname);
 const srcFolder = path.join(rootFolder, 'src');
@@ -73,6 +74,10 @@ gulp.task('rollup:fesm', function () {
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#entry
       entry: `${buildFolder}/index.js`,
 
+      plugins: [
+        absModuleFix()
+      ],
+
       // A list of IDs of modules that should remain external to the bundle
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#external
       external: [
@@ -105,6 +110,10 @@ gulp.task('rollup:umd', function () {
       external: [
         '@angular/core',
         '@angular/common'
+      ],
+
+      plugins: [
+        absModuleFix()
       ],
 
       // Format of generated bundle
