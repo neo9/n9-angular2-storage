@@ -38,4 +38,10 @@ export class N9InMemoryService implements N9StorageService {
       this.cache = {};
     } catch (e) { }
   }
+
+  forEach(fnc) {
+    Object.keys(this.cache).forEach((key) => {
+      fnc(this.cache[key], key);
+    });
+  }
 }

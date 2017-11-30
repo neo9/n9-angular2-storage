@@ -21,4 +21,8 @@ export class N9IonicStorageService implements N9StorageService {
   clear() {
     this.ionicStorage.clear();
   }
+
+  forEach(fnc) {
+    this.ionicStorage.forEach(fnc);
+  }
 }
