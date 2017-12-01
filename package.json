@@ -1,6 +1,6 @@
 {
   "name": "@neo9/n9-angular2-storage",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "scripts": {
     "preversion": "npm run lint",
     "version": "npm build",
