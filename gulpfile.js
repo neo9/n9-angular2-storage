@@ -76,7 +76,8 @@ gulp.task('rollup:fesm', function () {
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#external
       external: [
         '@angular/core',
-        '@angular/common'
+        '@angular/common',
+        '@ionic/storage'
       ],
       // Format of generated bundle
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#format
@@ -100,7 +101,8 @@ gulp.task('rollup:umd', function () {
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#external
       external: [
         '@angular/core',
-        '@angular/common'
+        '@angular/common',
+        '@ionic/storage'
       ],
       // Format of generated bundle
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#format
