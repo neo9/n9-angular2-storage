@@ -15,7 +15,7 @@ const tmpFolder = path.join(rootFolder, '.tmp');
 const buildFolder = path.join(rootFolder, 'build');
 const distFolder = path.join(rootFolder, 'dist');
 
-require('gulp-release-tag')(gulp);
+require('@neo9/gulp-release-tag')(gulp);
 
 /**
  * 1. Delete /dist folder
@@ -69,22 +69,15 @@ gulp.task('rollup:fesm', function () {
   return gulp.src(`${buildFolder}/**/*.js`)
     // transform the files here.
     .pipe(rollup({
-
       // Bundle's entry point
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#entry
       entry: `${buildFolder}/index.js`,
-
-      plugins: [
-        absModuleFix()
-      ],
-
       // A list of IDs of modules that should remain external to the bundle
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#external
       external: [
         '@angular/core',
         '@angular/common'
       ],
-
       // Format of generated bundle
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#format
       format: 'es'
@@ -100,35 +93,25 @@ gulp.task('rollup:umd', function () {
   return gulp.src(`${buildFolder}/**/*.js`)
     // transform the files here.
     .pipe(rollup({
-
       // Bundle's entry point
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#entry
-      entry: `${buildFolder}/index.js`,
-
+      input: `${buildFolder}/index.js`,
       // A list of IDs of modules that should remain external to the bundle
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#external
       external: [
         '@angular/core',
         '@angular/common'
       ],
-
-      plugins: [
-        absModuleFix()
-      ],
-
       // Format of generated bundle
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#format
       format: 'umd',
-
       // Export mode to use
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#exports
       exports: 'named',
-
       // The name to use for the module for UMD/IIFE bundles
       // (required for bundles with exports)
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#modulename
-      moduleName: 'test',
-
+      name: 'test',
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#globals
       globals: {
         typescript: 'ts'
