@@ -37,6 +37,8 @@ export class N9InMemoryService implements N9StorageService {
     try {
       this.cache = {};
     } catch (e) { }
+
+    return Promise.resolve();
   }
 
   forEach(fnc) {

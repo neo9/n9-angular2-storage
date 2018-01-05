@@ -32,7 +32,7 @@ describe('LocalStorageStoreService', () => {
   it('should return undefined if all data are cleared', () => {
     store.set('test', 'success');
     store.set('test2', 'success');
-    store.clear();
+    store.clear().then();
     expect(store.get('test')).toBeNull();
     expect(store.get('test2')).toBeNull();
   });

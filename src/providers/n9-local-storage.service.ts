@@ -34,6 +34,8 @@ export class N9LocalStorageService implements N9StorageService {
     try {
       this.window.localStorage.clear();
     } catch (e) { }
+
+    return Promise.resolve();
   }
 
   forEach(fnc) {

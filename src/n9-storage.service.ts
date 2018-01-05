@@ -5,7 +5,7 @@ export abstract class N9StorageService {
 
   abstract del(key: string): void;
 
-  abstract clear(): void;
+  abstract clear(): Promise<void>;
 
   abstract forEach(fnc: any): void;
 }

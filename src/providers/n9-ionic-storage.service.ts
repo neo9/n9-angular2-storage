@@ -18,8 +18,8 @@ export class N9IonicStorageService implements N9StorageService {
     this.ionicStorage.remove(key);
   }
 
-  clear() {
-    this.ionicStorage.clear();
+  clear(): Promise<void> {
+    return this.ionicStorage.clear();
   }
 
   forEach(fnc) {
