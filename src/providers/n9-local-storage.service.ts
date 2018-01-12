@@ -14,19 +14,22 @@ export class N9LocalStorageService implements N9StorageService {
     }
   }
 
-  set(key: string, data?: any) {
+  set(key: string, data?: any): Promise<void> {
     if (data === undefined) {
       this.del(key);
-      return;
+      return Promise.resolve();
     }
     try {
       this.window.localStorage.setItem(key, JSON.stringify(data));
     } catch (e) { }
+
+    return Promise.resolve();
   }
 
-  del(key: string) {
+  del(key: string): Promise<void> {
     try {
       this.window.localStorage.removeItem(key);
+      return Promise.resolve();
     } catch (e) { }
   }
 

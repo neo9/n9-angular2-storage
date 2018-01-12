@@ -9,31 +9,47 @@ describe('LocalStorageStoreService', () => {
   });
 
   it('should be able to retrieve store data', () => {
-    store.set('test', 'success');
-    expect(store.get('test')).toBe('success');
+    store.set('test', 'success').then(() => {
+      store.get('test').then((data) => {
+        expect(data).toBe('success');
+      });
+    });
   });
 
   it('should return undefined if no data found', () => {
-    expect(store.get('test')).toBeNull();
+    store.get('test').then((data) => {
+      expect(data).toBeNull();
+    });
   });
 
   it('should return undefined if set with undefined', () => {
-    store.set('test', 'success');
-    store.set('test', undefined);
-    expect(store.get('test')).toBeNull();
+    store.set('test', 'success').then(() => {
+      store.set('test', undefined).then(() => {
+        store.get('test').then((data) => {
+          expect(data).toBeNull();
+        });
+      });
+    });
   });
 
   it('should return undefined if data is removed', () => {
-    store.set('test', 'success');
-    store.del('test');
-    expect(store.get('test')).toBeNull();
+    store.set('test', 'success').then(() => {
+      store.del('test').then(() => {
+        store.get('test').then((data) => {
+          expect(data).toBeNull();
+        });
+      });
+    });
   });
 
   it('should return undefined if all data are cleared', () => {
-    store.set('test', 'success');
-    store.set('test2', 'success');
-    store.clear().then();
-    expect(store.get('test')).toBeNull();
-    expect(store.get('test2')).toBeNull();
+    store.set('test', 'success').then(() => {
+      store.set('test2', 'success').then(() => {
+        store.clear().then(() => {
+          expect(store.get('test')).toBeNull();
+          expect(store.get('test2')).toBeNull();
+        });
+      });
+    });
   });
 });

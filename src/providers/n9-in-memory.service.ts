@@ -9,28 +9,32 @@ export class N9InMemoryService implements N9StorageService {
     this.cache = {};
   }
 
-  get(key: string): any {
+  get(key: string): Promise<void> {
     try {
-      return JSON.parse(this.cache[key]);
+      return Promise.resolve(JSON.parse(this.cache[key]));
     } catch (e) {
-      return null;
+      return Promise.resolve(null);
     }
   }
 
-  set(key: string, data?: any) {
+  set(key: string, data?: any): Promise<void> {
     if (data === undefined) {
       this.del(key);
-      return;
+      return Promise.resolve();
     }
     try {
       this.cache[key] = JSON.stringify(data);
     } catch (e) { }
+
+    return Promise.resolve();
   }
 
-  del(key: string) {
+  del(key: string): Promise<void> {
     try {
       delete this.cache[key];
     } catch (e) { }
+
+    return Promise.resolve();
   }
 
   clear() {

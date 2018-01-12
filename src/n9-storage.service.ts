@@ -1,9 +1,9 @@
 export abstract class N9StorageService {
-  abstract get(key: string): any;
+  abstract get(key: string): Promise<void>;
 
-  abstract set(key: string, data?: any): void;
+  abstract set(key: string, data?: any): Promise<void>;
 
-  abstract del(key: string): void;
+  abstract del(key: string): Promise<void>;
 
   abstract clear(): Promise<void>;
 
