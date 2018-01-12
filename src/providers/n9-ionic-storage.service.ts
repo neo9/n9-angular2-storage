@@ -6,7 +6,7 @@ import { N9StorageService } from '../n9-storage.service';
 export class N9IonicStorageService implements N9StorageService {
   constructor(private ionicStorage: Storage) { }
 
-  get(key: string): Promise<void> {
+  get(key: string): Promise<any> {
     return this.ionicStorage.get(key);
   }
 

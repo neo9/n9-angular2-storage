@@ -9,7 +9,7 @@ export class N9InMemoryService implements N9StorageService {
     this.cache = {};
   }
 
-  get(key: string): Promise<void> {
+  get(key: string): Promise<any> {
     try {
       return Promise.resolve(JSON.parse(this.cache[key]));
     } catch (e) {
@@ -17,7 +17,7 @@ export class N9InMemoryService implements N9StorageService {
     }
   }
 
-  set(key: string, data?: any): Promise<void> {
+  set(key: string, data?: any): Promise<any> {
     if (data === undefined) {
       this.del(key);
       return Promise.resolve();

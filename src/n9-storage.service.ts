@@ -1,5 +1,5 @@
 export abstract class N9StorageService {
-  abstract get(key: string): Promise<void>;
+  abstract get(key: string): Promise<any>;
 
   abstract set(key: string, data?: any): Promise<void>;
 

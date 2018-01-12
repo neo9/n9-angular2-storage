@@ -6,11 +6,11 @@ import { windowProvider } from '../n9-window.provider';
 export class N9LocalStorageService implements N9StorageService {
   constructor( @Inject(windowProvider) private window: any) { }
 
-  get(key: string): any {
+  get(key: string): Promise<any> {
     try {
-      return JSON.parse(this.window.localStorage.getItem(key));
+      return Promise.resolve(JSON.parse(this.window.localStorage.getItem(key)));
     } catch (e) {
-      return null;
+      return Promise.resolve(null);
     }
   }
 
