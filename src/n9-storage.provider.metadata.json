@@ -1,0 +1,1 @@
+[{"__symbolic":"module","version":4,"metadata":{"storeFactory":{"__symbolic":"function"},"N9StorageProvider":{"provide":{"__symbolic":"reference","module":"./n9-storage.service","name":"N9StorageService","line":18,"character":11},"useFactory":{"__symbolic":"reference","name":"storeFactory"}}}}]
