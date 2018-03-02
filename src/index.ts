@@ -3,7 +3,6 @@ import { N9StorageProvider } from './n9-storage.provider';
 import { windowProvider } from './n9-window.provider';
 
 export * from './n9-storage.service';
-export * from './n9-ionic-storage.provider';
 
 export interface N9StorageModuleConfig {
   loader?: Provider;

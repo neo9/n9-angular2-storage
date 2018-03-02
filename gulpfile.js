@@ -50,7 +50,12 @@ gulp.task('inline-resources', function () {
  */
 gulp.task('ngc', function () {
   ngc(['--project', `${tmpFolder}/tsconfig.es5.json`]);
-  return Promise.resolve()
+  return Promise.resolve();
+});
+
+gulp.task('ionic:ngc', function () {
+    ngc(['--project', `${tmpFolder}/providers/ionic/tsconfig.es5.json`]);
+    return Promise.resolve();
 });
 
 /**
@@ -58,8 +63,8 @@ gulp.task('ngc', function () {
  *    generated file into the /dist folder
  */
 gulp.task('rollup:fesm', function () {
-  return gulp.src(`${buildFolder}/**/*.js`)
-    // transform the files here.
+  return gulp.src(`${buildFolder}/*.js`)
+  // transform the files here.
     .pipe(rollup({
       // Bundle's entry point
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#entry
@@ -71,6 +76,28 @@ gulp.task('rollup:fesm', function () {
         '@angular/core',
         '@angular/common',
         '@ionic/storage'
+      ],
+      // Format of generated bundle
+      // See https://github.com/rollup/rollup/wiki/JavaScript-API#format
+      format: 'es'
+    }))
+    .pipe(gulp.dest(distFolder));
+});
+gulp.task('ionic:rollup:fesm', function () {
+  return gulp.src(`${buildFolder}/**/*.js`)
+  // transform the files here.
+    .pipe(rollup({
+      // Bundle's entry point
+      // See https://github.com/rollup/rollup/wiki/JavaScript-API#entry
+      input: `${buildFolder}/providers/ionic/index.js`,
+      allowRealFiles: true,
+      // A list of IDs of modules that should remain external to the bundle
+      // See https://github.com/rollup/rollup/wiki/JavaScript-API#external
+      external: [
+        '@angular/core',
+        '@angular/common',
+        '@ionic/storage',
+        '@neo9/n9-angular2-storage'
       ],
       // Format of generated bundle
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#format
@@ -96,6 +123,40 @@ gulp.task('rollup:umd', function () {
         '@angular/core',
         '@angular/common',
         '@ionic/storage'
+      ],
+      // Format of generated bundle
+      // See https://github.com/rollup/rollup/wiki/JavaScript-API#format
+      format: 'umd',
+      // Export mode to use
+      // See https://github.com/rollup/rollup/wiki/JavaScript-API#exports
+      exports: 'named',
+      // The name to use for the module for UMD/IIFE bundles
+      // (required for bundles with exports)
+      // See https://github.com/rollup/rollup/wiki/JavaScript-API#modulename
+      name: 'test',
+      // See https://github.com/rollup/rollup/wiki/JavaScript-API#globals
+      globals: {
+        typescript: 'ts'
+      }
+
+    }))
+    .pipe(rename('test.umd.js'))
+    .pipe(gulp.dest(distFolder));
+});
+gulp.task('ionic:rollup:umd', function () {
+  return gulp.src(`${buildFolder}/**/*.js`)
+  // transform the files here.
+    .pipe(rollup({
+      // Bundle's entry point
+      // See https://github.com/rollup/rollup/wiki/JavaScript-API#entry
+      input: `${buildFolder}/providers/ionic/index.js`,
+      // A list of IDs of modules that should remain external to the bundle
+      // See https://github.com/rollup/rollup/wiki/JavaScript-API#external
+      external: [
+        '@angular/core',
+        '@angular/common',
+        '@ionic/storage',
+        '@neo9/n9-angular2-storage'
       ],
       // Format of generated bundle
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#format
@@ -157,6 +218,9 @@ gulp.task('compile', function () {
     'ngc',
     'rollup:fesm',
     'rollup:umd',
+    'ionic:ngc',
+    'ionic:rollup:fesm',
+    'ionic:rollup:umd',
     'copy:build',
     'copy:manifest',
     'clean:build',

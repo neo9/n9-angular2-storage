@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "module": "es2015",
+    "target": "es5",
+    "baseUrl": ".",
+    "stripInternal": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "outDir": "../../../build/providers/ionic/",
+    "rootDir": ".",
+    "lib": [
+      "es2015",
+      "dom"
+    ],
+    "paths": {
+      "@neo9/n9-angular2-storage": [
+        "../../../build"
+      ]
+    },
+    "skipLibCheck": true,
+    "types": []
+  },
+  "angularCompilerOptions": {
+    "annotateForClosureCompiler": true,
+    "strictMetadataEmit": true,
+    "skipTemplateCodegen": true,
+    "flatModuleOutFile": "n9-angular2-storage-ionic.js",
+    "flatModuleId": "@neo9/n9-angular2-storage/providers/ionic"
+  },
+  "files": [
+    "./index.ts"
+  ]
+}

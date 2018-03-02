@@ -1,6 +1,6 @@
 import { N9StorageService } from './n9-storage.service';
-import { N9LocalStorageService } from './providers/n9-local-storage.service';
-import { N9InMemoryService } from './providers/n9-in-memory.service';
+import { N9LocalStorageService } from './n9-local-storage.service';
+import { N9InMemoryService } from './n9-in-memory.service';
 
 export function storeFactory(): N9StorageService {
   if (window && window.localStorage) {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { N9StorageService } from '../n9-storage.service';
+import { N9StorageService } from '@neo9/n9-angular2-storage';
 
 @Injectable()
 export class N9IonicStorageService implements N9StorageService {

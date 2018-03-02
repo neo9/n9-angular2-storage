@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { N9StorageService } from '../n9-storage.service';
+import { N9StorageService } from './n9-storage.service';
 
 @Injectable()
 export class N9InMemoryService implements N9StorageService {

@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
-import { N9StorageService } from '../n9-storage.service';
-import { windowProvider } from '../n9-window.provider';
+import { N9StorageService } from './n9-storage.service';
+import { windowProvider } from './n9-window.provider';
 
 @Injectable()
 export class N9LocalStorageService implements N9StorageService {
