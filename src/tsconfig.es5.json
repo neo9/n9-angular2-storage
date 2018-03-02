@@ -18,6 +18,7 @@
     "types": []
   },
   "angularCompilerOptions": {
+    "genDir": ".",
     "annotateForClosureCompiler": true,
     "strictMetadataEmit": true,
     "skipTemplateCodegen": true,
