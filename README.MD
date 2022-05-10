@@ -1,3 +1,4 @@
+# No longer actively maintained
 # n9-angular2-storage
 
 ## Installation
@@ -86,4 +87,4 @@ $ npm run lint
 
 ## License
 
-MIT © [Gaetan SENN](mailto:gaetan.senn@gmail.com)
+MIT © Neo9
